@@ -21,7 +21,7 @@ public class NbtCheck_CustomName extends NbtCheck {
         StringBuilder text = new StringBuilder();
 
         for (JsonElement jsonElement : jsonArray) {
-            text.append(jsonElement.getAsJsonObject().get("text").getAsString());
+            if(jsonElement.isJsonObject()) text.append(jsonElement.getAsJsonObject().get("text").getAsString());
         }
 
         return text.toString();
