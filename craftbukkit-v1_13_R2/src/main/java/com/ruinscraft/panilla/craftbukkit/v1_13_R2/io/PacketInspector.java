@@ -51,6 +51,8 @@ public class PacketInspector implements IPacketInspector {
     public void checkPacketPlayInSetCreativeSlot(Object _packet) throws NbtNotPermittedException {
         if (_packet instanceof PacketPlayInSetCreativeSlot) {
             PacketPlayInSetCreativeSlot packet = (PacketPlayInSetCreativeSlot) _packet;
+            int windowId = packet.b();
+            if(windowId != 0 && panilla.getPConfig().ignoreNonPlayerInventories) return;
 
             int slot = packet.b();
             ItemStack itemStack = packet.getItemStack();

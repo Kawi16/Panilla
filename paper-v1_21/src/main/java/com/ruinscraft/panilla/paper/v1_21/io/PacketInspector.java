@@ -41,6 +41,8 @@ public class PacketInspector implements IPacketInspector {
     public void checkPacketPlayInClickContainer(Object packetHandle) throws NbtNotPermittedException {
         if (!(packetHandle instanceof PacketPlayInWindowClick)) return;
         PacketPlayInWindowClick packet = (PacketPlayInWindowClick) packetHandle;
+        int windowId = packet.b();
+        if(windowId != 0 && panilla.getPConfig().ignoreNonPlayerInventories) return;
 
         int slot = packet.f();
         ItemStack item = packet.g();
