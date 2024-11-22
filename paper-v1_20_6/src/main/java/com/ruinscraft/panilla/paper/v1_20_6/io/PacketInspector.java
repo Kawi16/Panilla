@@ -42,7 +42,7 @@ public class PacketInspector implements IPacketInspector {
         if (!(packetHandle instanceof PacketPlayInWindowClick)) return;
         PacketPlayInWindowClick packet = (PacketPlayInWindowClick) packetHandle;
         int windowId = packet.b();
-        if(windowId != 0 && panilla.getPConfig().ignoreNonPlayerInventories) return;
+        if (windowId != 0 && panilla.getPConfig().ignoreNonPlayerInventories) return;
 
         int slot = packet.f();
         ItemStack item = packet.g();
